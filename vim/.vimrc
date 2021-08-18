@@ -211,10 +211,43 @@ vmap <silent> <F9> :s/\s\+$//g<cr>
 
 nmap <leader>rg :%s/^\s\+//<cr>:%s/  .*$//<cr>:%s/^/#修正 {{issue_title(/<cr>:%s/$/)}}/<cr>
 
-map aa :s*^\s\+\\|^*\0//*<cr>:noh<cr>
+" use NERD_commenter instead of my own shortcuts
+if 0
+" C++ Compiler
+autocmd FileType cu,cpp,c,cc,h,hpp nnoremap aa :s*^\s\+\\|^*\0//*<cr>:noh<cr>
+
+" Python Interpreter
+autocmd FileType python nnoremap aa :s*^\s\+\\|^*\0#*<cr>:noh<cr>
+
+"map aa :s*^\s\+\\|^*\0//*<cr>:noh<cr>
 map au :s*\(^\s\+\\|^\)//*\1*<cr>:noh<cr>
 
 map as :%s/\(.*\) \(.*\) \(.*\)/\1 \3 \2/
+else
+
+" <leader>ca will select the comment style!!!
+
+" comment current line
+"   or comment 10 lines using 10cc
+"   or comment selected lines
+map cc <leader>cc
+" undo comment
+map cu <leader>cu
+" conflict with system keys
+"map cm <leader>cm
+" /*
+"  *
+"  */
+map cs <leader>cs
+" comment from current cursor to the end of the line
+" testaaaa -> test/*aaaa*/
+" conflict with system keys
+"map c$ <leader>c$
+"
+" comment at the end of the line
+" test; -> test; //
+map cA <leader>cA
+endif
 
 nmap <leader>lg oandroid.util.Log.e("gavinchen", "");<esc>2hi
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
